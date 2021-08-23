@@ -1,3 +1,4 @@
+![Test](https://github.com/ysfesr/YT-COMMENTS-ANALYSIS/actions/workflows/CI.yml/badge.svg)
 # Welcome to YT-COMMENTS-ANALYSIS.
 
 sentiment analysis on any youtube video’s comments
