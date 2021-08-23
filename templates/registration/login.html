@@ -1,0 +1,31 @@
+{% extends "base_generic.html" %}
+{% load tailwind_filters %}
+{% block title %}Login{% endblock title %}
+
+{% block content %}
+
+  {% if form.errors %}
+    <p>Your username and password didn't match. Please try again.</p>
+  {% endif %}
+
+  <form method="post" action="{% url 'login' %}">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button type="submit" class="inline-block px-6 py-2 text-xs font-medium leading-6 text-center text-black uppercase transition bg-gray-100 rounded shadow ripple hover:shadow-lg hover:bg-gray-200 focus:outline-none">login</button>
+    <input type="hidden" name="next" value="{{ next }}" />
+  </form>
+
+  {# Assumes you setup the password_reset view in your URLconf #}
+  <div class="mt-6 text-sm">
+    <p class="font-medium text-gray-600">Forgot your password?
+      <a href="{% url 'password_reset' %}" class="font-medium text-gray-600 hover:text-indigo-500">
+        Click here
+      </a>
+    </p>
+    <p class="font-medium text-gray-600">You don't have an account?
+      <a href="{% url 'signup' %}" class="font-medium text-gray-600 hover:text-indigo-500">
+        Sign up
+      </a>
+    </p>
+  </div>
+{% endblock %}
